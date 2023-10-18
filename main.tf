@@ -1,5 +1,6 @@
 module "networking" {
-  source = "./networking"
+  source  = "app.terraform.io/alex-mitev-onboard/networking/aws"
+  version = "1.0.2"
   cidr_block = var.cidr_block
   private_subnet_cidr = var.private_subnet_cidr
   public_subnet_cidr_1 = var.public_subnet_cidr_1
@@ -10,7 +11,8 @@ module "networking" {
 }
 
 module "lb" {
-  source = "./lb"
+  source  = "app.terraform.io/alex-mitev-onboard/lb/aws"
+  version = "1.0.0"
   vpc_id = module.networking.vpc_id
 
   aws_subnet1_id = module.networking.aws_subnet1_id
@@ -25,14 +27,16 @@ module "lb" {
 }
 
 module "sg" {
-  source = "./sg"
+  source  = "app.terraform.io/alex-mitev-onboard/sg/aws"
+  version = "1.0.0"
   vpc_id = module.networking.vpc_id
   cidr_block_allow = var.cidr_block_allow
   app_port = var.app_port
 }
 
 module "ec2" {
-  source                = "./ec2"
+  source  = "app.terraform.io/alex-mitev-onboard/ec2/aws"
+  version = "1.0.0"
   ec2_ami = var.ec2_ami
   instance_type = var.instance_type
   aws_private_subnet_id = module.networking.aws_private_subnet_id
