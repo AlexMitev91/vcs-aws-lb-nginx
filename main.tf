@@ -1,6 +1,5 @@
 module "networking" {
-  source  = "app.terraform.io/alex-mitev-onboard/networking/aws"
-  version = "1.0.2"
+  source  = "git@github.com:AlexMitev91/terraform-aws-networking.git?ref=1.0.2"
   cidr_block = var.cidr_block
   private_subnet_cidr = var.private_subnet_cidr
   public_subnet_cidr_1 = var.public_subnet_cidr_1
