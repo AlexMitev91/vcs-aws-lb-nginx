@@ -50,7 +50,7 @@ variable "public_az1"{
 
 variable "public_az2"{
     description = "Defines an AZ for the LB. Must be in a different zone than *public_az1*"
-    default = "us-east-1b"
+    default = "us-east-1c"
 }
 
 variable "cidr_block_allow" {
